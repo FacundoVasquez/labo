@@ -1,4 +1,6 @@
-# Este script esta pensado para correr en la PC local 
+# vCPU  8,    RAM  16GB,   Espacio en Disco  256 GB
+
+# Este script esta pensado para correr en Google Cloud
 # Optimizacion Bayesiana de hiperparametros de  lightgbm, con el metodo TRADICIONAL de los hiperparametros originales de lightgbm
 # 5-fold cross validation
 # la probabilidad de corte es un hiperparametro
@@ -95,7 +97,7 @@ EstimarGanancia_lightgbm  <- function( x )
                           lambda_l1= 0.0,         #por ahora, lo dejo fijo
                           lambda_l2= 0.0,         #por ahora, lo dejo fijo
                           max_bin= 31,            #por ahora, lo dejo fijo
-                          num_iterations= 9999,   #un numero muy grande, lo limita early_stopping_rounds
+                          num_iterations= 9999,    #un numero muy grande, lo limita early_stopping_rounds
                           force_row_wise= TRUE    #para que los alumnos no se atemoricen con tantos warning
                         )
 
@@ -110,8 +112,7 @@ EstimarGanancia_lightgbm  <- function( x )
                        stratified= TRUE, #sobre el cross validation
                        nfold= kfolds,    #folds del cross validation
                        param= param_completo,
-                       verbose= -100,
-                       seed= 999983
+                       verbose= -100
                       )
 
   #obtengo la ganancia
@@ -137,21 +138,21 @@ EstimarGanancia_lightgbm  <- function( x )
 #Aqui empieza el programa
 
 #Aqui se debe poner la carpeta de la computadora local
-setwd("D:\\gdrive\\Austral2022R\\")   #Establezco el Working Directory
+setwd("~/buckets/b1/")   #Establezco el Working Directory
 
 #cargo el dataset donde voy a entrenar el modelo
-dataset  <- fread("./datasets/paquete_premium_202011.csv")
+dataset  <- fread("./datasets/paquete_premium_202011.csv.gz")
 
 #creo la carpeta donde va el experimento
 # HT  representa  Hiperparameter Tuning
-dir.create( "./labo/exp/",  showWarnings = FALSE ) 
-dir.create( "./labo/exp/HT5330/", showWarnings = FALSE )
-setwd("D:\\gdrive\\Austral2022R\\labo\\exp\\HT5330\\")   #Establezco el Working Directory DEL EXPERIMENTO
+dir.create( "./exp/",  showWarnings = FALSE ) 
+dir.create( "./exp/HT5430/", showWarnings = FALSE )
+setwd("./exp/HT5430/")   #Establezco el Working Directory DEL EXPERIMENTO
 
 
 #en estos archivos quedan los resultados
-kbayesiana  <- "HT533.RDATA"
-klog        <- "HT533.txt"
+kbayesiana  <- "HT543.RDATA"
+klog        <- "HT543.txt"
 
 
 GLOBAL_iteracion  <- 0   #inicializo la variable global
