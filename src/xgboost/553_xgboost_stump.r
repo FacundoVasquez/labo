@@ -9,7 +9,7 @@ require("data.table")
 require("xgboost")
 
 #Aqui se debe poner la carpeta de la computadora local
-setwd("D:\\gdrive\\Austral2022R\\")   #Establezco el Working Directory
+setwd("C:/Users/Usuario/OneDrive/Facundo Vasquez/3_PostGraduateCourses/1_MCD_UAustral/11_LaboratorioI\\")   #Establezco el Working Directory
 
 #cargo el dataset donde voy a entrenar
 dataset  <- fread("./datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)

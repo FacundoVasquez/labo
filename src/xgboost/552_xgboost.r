@@ -8,7 +8,7 @@ require("data.table")
 require("xgboost")
 
 #Aqui se debe poner la carpeta de la computadora local
-setwd("D:\\gdrive\\Austral2022R\\")   #Establezco el Working Directory
+setwd("C:/Users/Usuario/OneDrive/Facundo Vasquez/3_PostGraduateCourses/1_MCD_UAustral/11_LaboratorioI\\")   #Establezco el Working Directory
 
 #cargo el dataset donde voy a entrenar
 dataset  <- fread("./datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)
@@ -28,8 +28,8 @@ dtrain  <- xgb.DMatrix( data= data.matrix(  dataset[ , campos_buenos, with=FALSE
 #genero el modelo con los parametros por default
 modelo  <- xgb.train( data= dtrain,
                       param= list( objective=       "binary:logistic",
-                                   max_depth=           4,
-                                   min_child_weight=   20 ),
+                                   max_depth=           2,
+                                   min_child_weight=   25 ),
                       nrounds= 40
                     )
 
@@ -47,7 +47,7 @@ entrega  <- as.data.table( list( "numero_de_cliente"= dapply[  , numero_de_clien
 
 dir.create( "./labo/exp/",  showWarnings = FALSE ) 
 dir.create( "./labo/exp/KA2552/", showWarnings = FALSE )
-archivo_salida  <- "./labo/exp/KA2552/KA_552_001.csv"
+archivo_salida  <- "./labo/exp/KA2552/KA_552_003.csv"
 
 #genero el archivo para Kaggle
 fwrite( entrega, 

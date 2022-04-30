@@ -12,8 +12,9 @@ require("parallel")
 
 #paquetes necesarios para la Bayesian Optimization
 require("DiceKriging")
+require("mlr")
 require("mlrMBO")
-
+require("Rcpp")
 
 #Defino la  Optimizacion Bayesiana
 
@@ -26,7 +27,7 @@ hs  <- makeParamSet(
           makeIntegerParam("maxdepth" , lower=  3L  , upper=   20L),
           forbidden = quote( minbucket > 0.5*minsplit ) )             # minbuket NO PUEDE ser mayor que la mitad de minsplit
 
-ksemilla_azar  <- 102191   #cambiar por la primer semilla
+ksemilla_azar  <- 118249   #cambiar por la primer semilla
 
 #------------------------------------------------------------------------------
 #graba a un archivo los componentes de lista
@@ -140,7 +141,7 @@ EstimarGanancia  <- function( x )
 #------------------------------------------------------------------------------
 #Aqui empieza el programa
 
-setwd( "D:\\gdrive\\Austral2022R\\" )
+setwd( "C:/Users/Usuario/OneDrive/Facundo Vasquez/3_PostGraduateCourses/1_MCD_UAustral/11_LaboratorioI" )
 
 #cargo el dataset
 dataset  <- fread("./datasets/paquete_premium_202011.csv")   #donde entreno
@@ -148,9 +149,9 @@ dataset  <- fread("./datasets/paquete_premium_202011.csv")   #donde entreno
 
 #creo la carpeta donde va el experimento
 # HT  representa  Hiperparameter Tuning
-dir.create( "./labo/exp/",  showWarnings = FALSE ) 
-dir.create( "./labo/exp/HT3210/", showWarnings = FALSE )
-setwd("D:\\gdrive\\Austral2022R\\labo\\exp\\HT3210\\")   #Establezco el Working Directory DEL EXPERIMENTO
+#dir.create( "./labo/exp/",  showWarnings = FALSE ) 
+#dir.create( "./labo/exp/HT3210/", showWarnings = FALSE )
+setwd("C:/Users/Usuario/OneDrive/Facundo Vasquez/3_PostGraduateCourses/1_MCD_UAustral/11_LaboratorioI/labo/exp/HT3210")   #Establezco el Working Directory DEL EXPERIMENTO
 
 
 archivo_log  <- "HT321.txt"
@@ -171,7 +172,7 @@ if( file.exists(archivo_log) )
 
 funcion_optimizar  <- EstimarGanancia
 
-configureMlr( show.learner.output= FALSE)
+configureMlr(show.learner.output = FALSE)
 
 #configuro la busqueda bayesiana,  los hiperparametros que se van a optimizar
 #por favor, no desesperarse por lo complejo

@@ -52,5 +52,5 @@ dir.create( "./labo/exp/" )
 dir.create( "./labo/exp/KA2001" ) 
 
 fwrite( entrega, 
-        file= "./labo/exp/KA2001/K101_001_BO.csv", 
+        file= "./labo/exp/KA2001/K101_003_BO.csv", 
         sep= "," )

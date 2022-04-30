@@ -1,7 +1,7 @@
 # Este script esta pensado para correr en la PC local 
-# Optimizacion Bayesiana de hiperparametros de  xgboost, con el metodo TRADICIONAL de los hiperparametros originales de xgboost
+# Optimizacion Bayesiana de hiperparametros de  xgboost, con el metodo HISTOGRAMA
 # 5-fold cross validation
-# la probabxilidad de corte es un hiperparametro
+# la probabilidad de corte es un hiperparametro
 
 #limpio la memoria
 rm( list=ls() )  #remove all objects
@@ -24,7 +24,7 @@ hs <- makeParamSet(
          makeNumericParam("eta",              lower=  0.01 , upper=    0.3),   #equivalente a learning rate
          makeNumericParam("colsample_bytree", lower=  0.2  , upper=    1.0),   #equivalente a feature_fraction
          makeIntegerParam("min_child_weight", lower=  0L   , upper=   10L),    #groseramente equivalente a  min_data_in_leaf
-         makeIntegerParam("max_depth",        lower=  2L   , upper=   30L),    #profundidad del arbol, NO es equivalente a num_leaves
+         makeIntegerParam("max_leaves",       lower=  2L   , upper= 1024L),    #profundidad del arbol, NO es equivalente a num_leaves
          makeNumericParam("prob_corte",       lower= 1/120 , upper=  1/20)     #pruebo  cortar con otras probabilidades
         )
 
@@ -89,10 +89,10 @@ EstimarGanancia_xgboost  <- function( x )
                           alpha=                0.0,  #por ahora, lo dejo fijo, equivalente a  lambda_l1
                           lambda=               0.0,  #por ahora, lo dejo fijo, equivalente a  lambda_l2
                           subsample=            1.0,  #por ahora, lo dejo fijo
-                          tree_method=       "auto",  #por ahora lo dejo fijo, pero ya lo voy a cambiar a "hist"
-                          grow_policy=  "depthwise",  #ya lo voy a cambiar a "lossguide"
+                          tree_method=       "hist",  # HISTOGRAMA
+                          grow_policy=  "lossguide",  # lossguide
                           max_bin=            256,    #por ahora fijo
-                          max_leaves=           0,    #ya lo voy a cambiar
+                          max_depth=           0,    #ya lo voy a cambiar
                           scale_pos_weight=     1.0   #por ahora, lo dejo fijo
                         )
 
@@ -144,13 +144,13 @@ dataset  <- fread("./datasets/paquete_premium_202011.csv")
 #creo la carpeta donde va el experimento
 # HT  representa  Hiperparameter Tuning
 dir.create( "./labo/exp/",  showWarnings = FALSE ) 
-dir.create( "./labo/exp/HT5630/", showWarnings = FALSE )
-setwd("C:\\Users\\FV62414\\OneDrive-Deere&Co\\OneDrive - Deere & Co\\Documents\\01_FacundoVasquez\\03_OwnFiles\\03_MCD_UniversidadAustral\\10_LaboratorioI\\labo\\exp\\HT5630\\")   #Establezco el Working Directory DEL EXPERIMENTO
+dir.create( "./labo/exp/HT5730/", showWarnings = FALSE )
+setwd("C:\\Users\\FV62414\\OneDrive-Deere&Co\\OneDrive - Deere & Co\\Documents\\01_FacundoVasquez\\03_OwnFiles\\03_MCD_UniversidadAustral\\10_LaboratorioI\\labo\\exp\\HT5730\\")   #Establezco el Working Directory DEL EXPERIMENTO
 
 
 #en estos archivos quedan los resultados
-kbayesiana  <- "HT563.RDATA"
-klog        <- "HT563.txt"
+kbayesiana  <- "HT573.RDATA"
+klog        <- "HT573.txt"
 
 
 GLOBAL_iteracion  <- 0   #inicializo la variable global

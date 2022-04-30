@@ -147,7 +147,7 @@ dir.create( "./labo/exp/HT3320/", showWarnings = FALSE )
 setwd("C:\\Users\\FV62414\\OneDrive-Deere&Co\\OneDrive - Deere & Co\\Documents\\01_FacundoVasquez\\03_OwnFiles\\03_MCD_UniversidadAustral\\10_LaboratorioI/labo/exp/HT3320")   #Establezco el Working Directory DEL EXPERIMENTO
 
 
-archivo_log  <- "HT332.txt"
+archivo_log  <- "HT332_2.txt"
 
 
 #leo si ya existe el log, para retomar en caso que se se corte el programa
