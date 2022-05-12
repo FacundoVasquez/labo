@@ -32,7 +32,7 @@ param:
     learning_rate:      [ 0.015, 0.45]
     feature_fraction:   [ 0.1, 2.0 ]
     num_leaves:         [ 16, 1184, "integer" ]
-    min_data_in_leaf:   [  0, 10000, "integer" ]
+    min_data_in_leaf:   [  0, 9000, "integer" ]
 
     lambda_l1:  0
     lambda_l2:  0
@@ -66,7 +66,7 @@ param:
 
   #Optimizacion Bayesiana
   BO:
-    iterations: 100             #cantidad de iteraciones
+    iterations: 250             #cantidad de iteraciones
 
     noisy: TRUE
     minimize: FALSE
