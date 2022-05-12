@@ -30,7 +30,7 @@ param:
   lightgbm:
 
     learning_rate:      [ 0.015, 0.45]
-    feature_fraction:   [ 0.1, 2.0 ]
+    feature_fraction:   [ 0.05, 1.0 ]
     num_leaves:         [ 16, 1184, "integer" ]
     min_data_in_leaf:   [  0, 9000, "integer" ]
 
