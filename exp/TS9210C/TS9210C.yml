@@ -8,11 +8,11 @@ experiment:
   script: "src/completo/z921_TS_generico.r"
   restart: FALSE
   name: "exp"
-  requires: [ "FE9120C" ]
+  requires: [ "FE9120C1" ]
 
 
 param:
-  semilla: 102191
+  semilla: 118249
 
   #donde aplico el modelo final, los datos sin clase
   future:
