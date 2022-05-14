@@ -248,8 +248,8 @@ AgregarVariables  <- function( dataset )
   dataset[ , mvr_mpagominimo         := mv_mpagominimo  / mv_mlimitecompra ]
 
   #Aqui debe usted agregar sus propias nuevas variables
-  dataset[ , fv_a_mcuentas_ln                                         := ln(mcuentas_saldo)]
-  dataset[ , fv_a_mcuentasCliente_edad_ln                             := ln(mcuentas_saldo / cliente_edad)]
+  dataset[ , fv_a_mcuentas_ln                                         := log(mcuentas_saldo)]
+  dataset[ , fv_a_mcuentasCliente_edad_ln                             := log(mcuentas_saldo / cliente_edad)]
   dataset[ , fv_a_mcomisiones_e                                       := exp(mcomisiones)]
   dataset[ , fv_a_mcomisionesCliente_edad_e                           := exp(mcomisiones / cliente_edad)]
   dataset[ , fv_a_mcomisionesCliente_edad                             := mcomisiones / cliente_edad]
