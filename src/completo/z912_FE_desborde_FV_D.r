@@ -260,6 +260,12 @@ AgregarVariables  <- function( dataset )
   dataset[ , fv_a_Master_mlimitecompraVisa_mlimitecompramComisiones   := ((Master_mlimitecompra+Visa_mlimitecompra)/mcomisiones)]
   dataset[ , fv_a_mpagomiscuentasMautoservicio                        := mpagomiscuentas / mautoservicio]
   dataset[ , fv_a_mautoservicioMcajeros_propios_descuentos_2          := mautoservicio / (mcajeros_propios_descuentos^2)]
+  dataset[ , fv_d_mpagodeserviciosMpagomiscuentas                     := mpagodeservicios / mpagomiscuentas]
+  dataset[ , fv_d_matmMatm_other                                      := matm / matm_other]
+  dataset[ , fv_d_matm_otherMatm_e                                    := exp(matm_other/matm)]
+  dataset[ , fv_d_matmCliente_edad                                    := matm / cliente_edad]
+  
+
 
   #valvula de seguridad para evitar valores infinitos
   #paso los infinitos a NULOS
