@@ -452,6 +452,25 @@ Tony  <- function( cols )
 }
 
 #------------------------------------------------------------------------------
+#Autor: Facundo Vasquez, UA MCD Rosario 2022
+
+Tinder <- function( cols )
+{
+
+  sufijo <- paste0("_Match")
+
+  dataset[ , paste0( cols, sufijo) := lapply(function(x){
+    if(log(x)>= 0){1}
+    else {
+       0
+    }
+  }),
+             by = foto_mes, 
+             .SDcols= cols]
+
+  ReportarCampos( dataset )
+}
+#------------------------------------------------------------------------------
 
 VPOS_CORTE  <- c()
 
