@@ -443,7 +443,7 @@ TendenciaYmuchomas  <- function( dataset, cols, ventana=6, tendencia=TRUE, minim
 #------------------------------------------------------------------------------
 #Autor: Antonio Velazquez Bustamente,  UBA 2021
 
-Tony  <- function()
+Tony  <- function(dataset)
 {
   gc()
 
@@ -666,7 +666,7 @@ if( PARAM$corregir )  Corregir( dataset )  #esta linea debe ir DESPUES de  Dummi
 
 if( PARAM$variablesmanuales )  AgregarVariables( dataset )
 
-if( PARAM$tony ) tony( dataset )
+if( PARAM$Tony ) Tony( dataset )
 
 if( PARAM$Tinder ) Tinder( dataset )
 
