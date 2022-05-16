@@ -443,7 +443,7 @@ TendenciaYmuchomas  <- function( dataset, cols, ventana=6, tendencia=TRUE, minim
 #------------------------------------------------------------------------------
 #Autor: Antonio Velazquez Bustamente,  UBA 2021
 
-Tony  <- function(dataset)
+Tony  <- function(dataset, cols = colnames(dataset))
 {
   gc()
 
@@ -459,7 +459,7 @@ Tony  <- function(dataset)
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Tinder <- function(dataset)
+Tinder <- function(dataset, cols = colnames(dataset))
 {
   gc()
 
@@ -479,7 +479,7 @@ Tinder <- function(dataset)
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Fraccionando <- function(dataset)
+Fraccionando <- function(dataset, cols = colnames(dataset))
 {
   gc()
 
@@ -494,7 +494,7 @@ Fraccionando <- function(dataset)
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Normi <- function(dataset)
+Normi <- function(dataset, cols = colnames(dataset))
 {
   gc()
 
@@ -509,7 +509,7 @@ Normi <- function(dataset)
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-DummyByMode <- function(dataset)
+DummyByMode <- function(dataset, cols = colnames(dataset))
 {
   gc()
 
@@ -530,7 +530,7 @@ DummyByMode <- function(dataset)
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-TonyByMode <- function(dataset)
+TonyByMode <- function(dataset, cols = colnames(dataset))
 {
   gc()
 
