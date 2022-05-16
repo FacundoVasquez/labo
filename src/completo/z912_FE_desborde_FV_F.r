@@ -443,7 +443,7 @@ TendenciaYmuchomas  <- function( dataset, cols, ventana=6, tendencia=TRUE, minim
 #------------------------------------------------------------------------------
 #Autor: Antonio Velazquez Bustamente,  UBA 2021
 
-Tony  <- function( cols )
+Tony  <- function( dataset, cols )
 {
   gc()
 
@@ -459,7 +459,7 @@ Tony  <- function( cols )
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Tinder <- function( cols )
+Tinder <- function( dataset, cols )
 {
   gc()
 
@@ -479,7 +479,7 @@ Tinder <- function( cols )
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Logi <- function( cols )
+Logi <- function( dataset, cols )
 {
   gc()
 
@@ -494,7 +494,7 @@ Logi <- function( cols )
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Expo <- function( cols )
+Expo <- function( dataset, cols )
 {
   gc()
 
@@ -509,7 +509,7 @@ Expo <- function( cols )
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Fraccionando <- function( cols )
+Fraccionando <- function( dataset, cols )
 {
   gc()
 
@@ -524,7 +524,7 @@ Fraccionando <- function( cols )
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Normi <- function( cols )
+Normi <- function( dataset, cols )
 {
   gc()
 
@@ -539,7 +539,7 @@ Normi <- function( cols )
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-DummyByMode <- function( cols )
+DummyByMode <- function( dataset, cols )
 {
   gc()
 
@@ -560,7 +560,7 @@ DummyByMode <- function( cols )
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-TonyByMode <- function( cols )
+TonyByMode <- function( dataset, cols )
 {
   gc()
 
