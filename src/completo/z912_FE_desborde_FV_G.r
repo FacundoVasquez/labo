@@ -459,7 +459,7 @@ Tony  <- function()
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Tinder <- function()
+Tinder <- function(dataset)
 {
   gc()
 
@@ -479,37 +479,7 @@ Tinder <- function()
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Logi <- function()
-{
-  gc()
-
-  sufijo <- paste0("_ln")
-
-  dataset[ , paste0( cols, sufijo) := lapply(function(x){log(x)}),
-             by = foto_mes, 
-             .SDcols= cols]
-
-  ReportarCampos( dataset )
-}
-#------------------------------------------------------------------------------
-#Autor: Facundo Vasquez, UA MCD Rosario 2022
-
-Expo <- function()
-{
-  gc()
-
-  sufijo <- paste0("_exp")
-
-  dataset[ , paste0( cols, sufijo) := lapply(function(x){exp(x)}),
-             by = foto_mes, 
-             .SDcols= cols]
-
-  ReportarCampos( dataset )
-}
-#------------------------------------------------------------------------------
-#Autor: Facundo Vasquez, UA MCD Rosario 2022
-
-Fraccionando <- function()
+Fraccionando <- function(dataset)
 {
   gc()
 
@@ -524,7 +494,7 @@ Fraccionando <- function()
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-Normi <- function()
+Normi <- function(dataset)
 {
   gc()
 
@@ -539,7 +509,7 @@ Normi <- function()
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-DummyByMode <- function()
+DummyByMode <- function(dataset)
 {
   gc()
 
@@ -560,7 +530,7 @@ DummyByMode <- function()
 #------------------------------------------------------------------------------
 #Autor: Facundo Vasquez, UA MCD Rosario 2022
 
-TonyByMode <- function()
+TonyByMode <- function(dataset)
 {
   gc()
 
@@ -699,10 +669,6 @@ if( PARAM$variablesmanuales )  AgregarVariables( dataset )
 if( PARAM$tony ) tony( dataset )
 
 if( PARAM$Tinder ) Tinder( dataset )
-
-if( PARAM$Logi) Logi( dataset )
-
-if( PARAM$Expo ) Expo( dataset )
 
 if( PARAM$Fraccionando ) Fraccionando( dataset )
 
