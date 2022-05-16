@@ -449,7 +449,9 @@ Tony  <- function(dataset, cols = colnames(dataset))
 
   sufijo  <- paste0( "_tony")
 
-  dataset[ , paste0( cols, sufijo) := lapply( .SD,  function(x){ x/mean(x, na.rm=TRUE)} ), 
+  dataset[ , paste0( cols, sufijo) := lapply( .SD,  function(x){ 
+    if(is.numeric(x)){x/mean(x, na.rm=TRUE)}
+    } ), 
              by= foto_mes, 
              .SDcols= cols]
 
@@ -466,11 +468,13 @@ Tinder <- function(dataset, cols = colnames(dataset))
   sufijo <- paste0("_Match")
 
   dataset[ , paste0( cols, sufijo) := lapply(function(x){
-    if(log(x)>= 0){1}
-    else {
+    if(is.numeric(x)){
+      if(log(x)>= 0){1}
+      else {
        0
+        }
     }
-  }),
+    }),
              by = foto_mes, 
              .SDcols= cols]
 
@@ -485,7 +489,9 @@ Fraccionando <- function(dataset, cols = colnames(dataset))
 
   sufijo <- paste0("_fracc")
 
-  dataset[ , paste0( cols, sufijo) := lapply(function(x){x/max(x)}),
+  dataset[ , paste0( cols, sufijo) := lapply(function(x){
+    if(is.numeric(x)){x/max(x)}
+    }),
              by = foto_mes, 
              .SDcols= cols]
 
@@ -500,7 +506,9 @@ Normi <- function(dataset, cols = colnames(dataset))
 
   sufijo <- paste0("_Normi")
 
-  dataset[ , paste0( cols, sufijo) := lapply(function(x){x/(max(x)-min(x))}),
+  dataset[ , paste0( cols, sufijo) := lapply(function(x){
+    if(is.numeric(x)) {x/(max(x)-min(x))}
+    }),
              by = foto_mes, 
              .SDcols= cols]
 
@@ -516,10 +524,12 @@ DummyByMode <- function(dataset, cols = colnames(dataset))
   sufijo <- paste0("_DMode")
 
   dataset[ , paste0( cols, sufijo) := lapply(function(x){
+    if(is.numeric(x)){ 
     Mode <- unique(x)[which.max(tabulate(match(x, unique(x))))]
     if(x >= Mode){1}
     else {
        0
+      }
     }
   }),
              by = foto_mes, 
@@ -536,7 +546,9 @@ TonyByMode <- function(dataset, cols = colnames(dataset))
 
   sufijo <- paste0("TMode")
 
-  dataset[ , paste0( cols, sufijo) := lapply( .SD,  function(x){ x/(unique(x)[which.max(tabulate(match(x, unique(x))))])} ),
+  dataset[ , paste0( cols, sufijo) := lapply( .SD,  function(x){
+    if(is.numeric(x)) {x/(unique(x)[which.max(tabulate(match(x, unique(x))))])}
+    }),
              by = foto_mes, 
              .SDcols= cols]
 
