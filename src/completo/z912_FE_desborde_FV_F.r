@@ -445,6 +445,7 @@ TendenciaYmuchomas  <- function( dataset, cols, ventana=6, tendencia=TRUE, minim
 
 Tony  <- function( cols )
 {
+  gc()
 
   sufijo  <- paste0( "_tony")
 
@@ -460,6 +461,7 @@ Tony  <- function( cols )
 
 Tinder <- function( cols )
 {
+  gc()
 
   sufijo <- paste0("_Match")
 
@@ -479,6 +481,7 @@ Tinder <- function( cols )
 
 Logi <- function( cols )
 {
+  gc()
 
   sufijo <- paste0("_ln")
 
@@ -493,6 +496,7 @@ Logi <- function( cols )
 
 Expo <- function( cols )
 {
+  gc()
 
   sufijo <- paste0("_exp")
 
@@ -507,6 +511,7 @@ Expo <- function( cols )
 
 Fraccionando <- function( cols )
 {
+  gc()
 
   sufijo <- paste0("_fracc")
 
@@ -521,6 +526,7 @@ Fraccionando <- function( cols )
 
 Normi <- function( cols )
 {
+  gc()
 
   sufijo <- paste0("_Normi")
 
@@ -535,6 +541,7 @@ Normi <- function( cols )
 
 DummyByMode <- function( cols )
 {
+  gc()
 
   sufijo <- paste0("_DMode")
 
@@ -555,6 +562,7 @@ DummyByMode <- function( cols )
 
 TonyByMode <- function( cols )
 {
+  gc()
 
   sufijo <- paste0("TMode")
 
