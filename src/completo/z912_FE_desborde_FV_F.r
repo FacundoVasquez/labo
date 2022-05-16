@@ -270,6 +270,10 @@ AgregarVariables  <- function( dataset )
   dataset[ , fv_d_Master_mpagominimoMcaja_ahorro_e                    := exp(Master_mpagominimo / mcaja_ahorro)]
   dataset[ , fv_d_Master_mpagominimoVisa_mpagominimoMcaja_ahorro      := (Master_mpagominimo + Visa_mpagominimo) / mcaja_ahorro]
   dataset[ , fv_d_Visa_mpagominimoVisa_mpagominimoMcaja_ahorro_e      := exp((Visa_mpagominimo + Visa_mpagominimo) / mcaja_ahorro)]
+  dataset[ , fv_f_mrentabilidadMrentabilidad_annual                   := mrentabilidad / mrentabilidad_annual]
+  dataset[ , fv_f_mrentabilidadMrentabilidad_annual_ln                := log(mrentabilidad / mrentabilidad_annual)]
+  dataset[ , fv_f_mrentabilidadMrentabilidad_annualDIVcliente_edad    := (mrentabilidad / mrentabilidad_annual) / cliente_edad]
+  dataset[ , fv_f_mrentabilidadMrentabilidad_annualXcliente_edad      := (mrentabilidad / mrentabilidad_annual) * cliente_edad]
 
 
   #valvula de seguridad para evitar valores infinitos
@@ -471,7 +475,96 @@ Tinder <- function( cols )
   ReportarCampos( dataset )
 }
 #------------------------------------------------------------------------------
+#Autor: Facundo Vasquez, UA MCD Rosario 2022
 
+Logi <- function( cols )
+{
+
+  sufijo <- paste0("_ln")
+
+  dataset[ , paste0( cols, sufijo) := lapply(function(x){log(x)}),
+             by = foto_mes, 
+             .SDcols= cols]
+
+  ReportarCampos( dataset )
+}
+#------------------------------------------------------------------------------
+#Autor: Facundo Vasquez, UA MCD Rosario 2022
+
+Expo <- function( cols )
+{
+
+  sufijo <- paste0("_exp")
+
+  dataset[ , paste0( cols, sufijo) := lapply(function(x){exp(x)}),
+             by = foto_mes, 
+             .SDcols= cols]
+
+  ReportarCampos( dataset )
+}
+#------------------------------------------------------------------------------
+#Autor: Facundo Vasquez, UA MCD Rosario 2022
+
+Fraccionando <- function( cols )
+{
+
+  sufijo <- paste0("_fracc")
+
+  dataset[ , paste0( cols, sufijo) := lapply(function(x){x/max(x)}),
+             by = foto_mes, 
+             .SDcols= cols]
+
+  ReportarCampos( dataset )
+}
+#------------------------------------------------------------------------------
+#Autor: Facundo Vasquez, UA MCD Rosario 2022
+
+Normi <- function( cols )
+{
+
+  sufijo <- paste0("_Normi")
+
+  dataset[ , paste0( cols, sufijo) := lapply(function(x){x/(max(x)-min(x))}),
+             by = foto_mes, 
+             .SDcols= cols]
+
+  ReportarCampos( dataset )
+}
+#------------------------------------------------------------------------------
+#Autor: Facundo Vasquez, UA MCD Rosario 2022
+
+DummyByMode <- function( cols )
+{
+
+  sufijo <- paste0("_DMode")
+
+  dataset[ , paste0( cols, sufijo) := lapply(function(x){
+    Mode <- unique(x)[which.max(tabulate(match(x, unique(x))))]
+    if(x >= Mode){1}
+    else {
+       0
+    }
+  }),
+             by = foto_mes, 
+             .SDcols= cols]
+
+  ReportarCampos( dataset )
+}
+#------------------------------------------------------------------------------
+#Autor: Facundo Vasquez, UA MCD Rosario 2022
+
+TonyByMode <- function( cols )
+{
+
+  sufijo <- paste0("TMode")
+
+  dataset[ , paste0( cols, sufijo) := lapply( .SD,  function(x){ x/(unique(x)[which.max(tabulate(match(x, unique(x))))])} ),
+             by = foto_mes, 
+             .SDcols= cols]
+
+  ReportarCampos( dataset )
+}
+#------------------------------------------------------------------------------
 VPOS_CORTE  <- c()
 
 fganancia_lgbm_meseta  <- function(probs, datos) 
